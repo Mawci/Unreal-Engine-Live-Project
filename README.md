@@ -1,15 +1,25 @@
 # Live Project
 ## Introduction
 &emsp;This project was done as an apprenticeship for [Prosper IT Consulting](https://www.linkedin.com/company/prosper-it-consulting/) where I participated in Agile/Scrum practices by completing user stories (as well as sprint planning, daily stand-ups, sprint retrospective) to deliver a functional MVP game in Unreal Engine version 5.3. I was fully responsible for every aspect of the game's development including concept, planning, design, animation, and programming. I attempted an extremely ambitious feat of creating a 3rd Person Shooter Survival game that would be both "fun" and replayable. Since this was my first game created using Unreal Engine, nearly every feature/mechanic included had to be referenced from Unreal's documentation, forums, or tutorial guides. I fully committed myself during the 2 week sprint, working 10+ hour days including weekends to achieve this success. There were many times throughout development were I learned better ways of implementing features or improving efficiencies, but I wasn't able to incorporate all of them for the sake of time. This is just a disclaimer that the project is nowhere near perfect and many times I just needed to get something working to move forward.  Completing this game, however, taught me better development [skills](#other-skills-learned) which I will continue building upon in future projects.
+##
+<br>
+<p align="center">
+  If you would like to play the game, it is currently pending publication but can be downloaded 
+  <a href="https://drive.google.com/file/d/1IN401tqY5BuFzRkgJjavJWHKRzgLT6Fq/view?usp=drive_link">here</a>.
+</p>
+
+<p align=center>
+<img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/trailer.gif" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"/>
+</p>
 
 &emsp;Below are descriptions of the stories I worked on, screenshots, gifs, and navigation links. I have also included all the .uassets of blueprints created for the game in this repository. If there are any details not included in this summary that you would like to know about, please feel free to contact me.
 
-
-If you would like to play the game, it is currently pending publication but can be downloaded [here](https://drive.google.com/file/d/1IN401tqY5BuFzRkgJjavJWHKRzgLT6Fq/view?usp=drive_link).
-
 ## User Stories
- * [Game Scenes](#game-scenes)
- * [Player Movement](#player-movement)
+ * [LandScape and Structures](#game-scenes)
+ * [GameMode and HUD](#player-movement)
+   * [Animations]()
+   * [Weapon Handling]()
+   * [Weapon Firing]()
  * [Player Abilites](#player-abilities)
  * [Environment](#environment)
  * [Animations](#animations)
