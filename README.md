@@ -43,13 +43,13 @@ next imported assets and learned the workflow from Fab, Cosmos, and Sketchfab3d.
 Many of the imported assets had terrible collision boxes that were not representabive of the meshes. I there for went through every imported asset, removing the collision and adding custom collision to each on. I did this knowing that the player would be relying on every bit of real estate in the map to avoid being killed and it would only lead to frustration for the player being blocked by invisible walls. I also increase some collision boxes like the one you see below to ensure the player stayed within the boundary of the map, this was after discovering the player could strafe jump ontop of the fence.
 
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/customCollision.png" width="1000" /></p>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/customCollision.png" width="600" width="338" /></p>
 With all of the asset collision boxes edited, I built a small area the player could walk aroun in. Started out as you can see below. 
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/environment.png" width="1000" /></p>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/environment.png" width="600" width="338" /></p>
 trees and foliage were added afterwards with use of the foliage mode editor in unreal engine. customizing the active brush size and density ensure variations in certain types of plants that helped to break up the scene and add a feeling of immersion. 
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/foliageMode.png" width="1000" /></p>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/foliageMode.png" width="600" width="338" /></p>
 
 
 <!--
@@ -66,191 +66,123 @@ trees and foliage were added afterwards with use of the foliage mode editor in u
 
 &emsp;This story was seemingly simple as the movement in Space Invaders is not too complex, however I still ran into a bug that I needed to carefully step through. Initially, I used transform.Translate() to move the player using its horizontal vector multipied by a constant speed. This worked, but I needed a way to ensure the player stayed within the viewable bounds of the screen. To solve this, I created two variables that would hold the maximum position on the right and left sides of the screen before going out of view. Then I did a simple check to see if the player was within those two values. If they were, then allow input to move the player.
 <br/> <br/>
-
+retargeted the animations using unreals retargeter and then created a blendspace
+created 2 different blendspaces for the character animation blueprint based on the speed. I set the max speed knowing that I would need to be faster than the max speed of the enemies. Below you can see the 
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/BlendSpace.png"  />
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/BlendSpace.png" width="600" width="338" />
 </p>
 
+with the blendspace created I then blended them in the animation blueprint to combine the lower anims of the locomotions with the uper anims of holding a rifle
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/layeredblendBone.png"  />
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/layeredblendBone.png" width="600" width="338" />
 </p>
 
+with the animation set, now I learned how to attach object to skeleton meshes by creating sockets. i created a right hand socket on the bone of the right hand and added the weapon skeleton mesh to the socket of the character mesh. Then minor adjustments to the rotation of the weapon made the weapon holding animation look more realistic.
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/addingWeapon2Socket.gif" />
 </p>
-
+The combination of the blending and weapon in the socket started to make the game feel like a shooter. Below you can see the first stages of the character moving with just those few additions. 
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/locomotion.gif" />
 </p>
 
+SHOOTING
+Next was getting the weapon to shoot. I edited the skeleton mesh of the weapon to add a socket similarly. This was so I would have a place to add particle animations and intially I did my debug lines from this when shooting. (later I found out that it felt to unnatural and I need to change the starting position of the line trace.
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/linetracesocket.png"  />
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/linetracesocket.png" width="600" width="338" />
 </p>
-    
+
+I created my own anaimation sequence by recording the weapon not moving. This was perfect bc all the animations of the gun were only going to be the it flashing. I learned about animation notifies and below I added a notify to spawn a particle during the shoot animation. It was only the starter content explosion for a placeholder until I later imported a muzzleflash effect, but it served its purpose.  
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/weaponfiringanimation.gif"  /> 
 </p>
 
 
-
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/LineTraceScreenShot.png"  />
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/LineTraceScreenShot.png" width="600" width="338" />
 </p>
 
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/weaponShootScreenshot.png" />
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/weaponShootScreenshot.png" width="600" width="338" />
 </p>
 
 
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/shootTestingwithspread.gif" />
 </p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/HUD%20BINDINGS.png" width="600" width="338"/>
+</p>
+
 <p align=center>
     <img src="" />
 </p>
 
-#### Movement Bug
-&emsp;Through playtesting, I discovered that this wouldn’t always work. Since I was using transform.Translate() to move, the player would sometimes move faster than the check to see if it was within the bounds. Therefore, it would go past the boundary to then be perpetually stuck and no longer able to register input. To solve this bug I added two additional checks after the player movement to see if the player was outside the bounds. If they were outside the bounds, (which would mean they can never move again) then reset the player position back to the maximum right/left position. This way, if a player managed to go past the edge, the next line of code would quickly reposition them so that the next Update function call (checking if the player position is valid) would return true, allowing the player to move again.
-
-```c#
-if(transform.position.x < maxLeft)
-{
-    transform.position = new Vector2(maxLeft, transform.position.y);
-}
-
-if (transform.position.x > maxRight)
-{
-    transform.position = new Vector2(maxRight, transform.position.y);
-}
-```
-&emsp;With the addition of the two lines of code above, the player now gets instantly micro-adjusted to be within the screen bounds. As you can see below, seemingly resulting in an "invisible barrier" feel.
-
-<p align=center>
-<img src="https://github.com/Mawci/Live-Project-Unity/blob/main/Gifs/playerMovement.gif" />
-</p>
-<!--
-![](https://github.com/Mawci/Live-Project-Unity/blob/main/Gifs/playerMovement.gif)
--->
 
 *Jump To: [Page Top](#introduction), [Game Scenes](#game-scenes), [Environment](#environment), [Animations](#animations), [Enemies](#enemies), [New Level](#new-level), [Game Over](#game-over), [Skills](#other-skills-learned)*
 
 ##
 
-### Player Abilities
+### Player Abilities Collectables Obstacles
 
 
-&emsp;For this story I was tasked with completing the abilities for the player. Seemingly simple as the player only has the “shoot” ability, I learned just how tedious it needed to be to fully encompass an original Space Invader clone. Initially, I worked with the player controller script to register input appropriately. Then made the player projectile by combining Unity’s sprite renderer component, 2DBoxCollider, 2DRigidBody, with a custom movement script that gives constant speed in the y axis.
+&emsp;For this story 
 <br/>
 <br/>
-<p align=center>
-    <img src="https://github.com/Mawci/Live-Project-Unity/blob/main/images/bulletProjectile.png" />
-</p>
-
-
-#### Bullet Spamming Bug
-&emsp;The above implementation worked. However, it introduced an unintended feature. The player could hit the spacebar as fast as they wanted to shoot rapidly. Part of the difficulty in Space Invaders is the rate of fire and the necessity to plan your shots as the enemies dwindle. To prevent the player from spamming, I implemented a coroutine that would call the shoot function. The time passed into WaitForSeconds() would simulate the fire rate with a simple boolean flag to check if the coroutine is active or not. In the code below, it is the isShooting variable
-
-```c#
-// In the Update Method 
-if (Input.GetKeyDown(KeyCode.Space) && !isShooting)
-{
-    StartCoroutine(Shoot());
-}
-
-// Shoot function called when space is pressed and isShooting is false
-private IEnumerator Shoot()
-{
-    isShooting = true;
-    Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-    yield return new WaitForSeconds(playerStats.fireRate);
-    isShooting = false;
-}
-```
-&emsp;If isShooting is true, don’t allow the player to shoot another projectile. Only when isShooting is false can the player shoot a projectile. Now you can see below, the steady rate of fire, even though I was pressing the space bar as fast as I could. 
-<p align=center>
-    <img src="https://github.com/Mawci/Live-Project-Unity/blob/main/Gifs/playerShooting.gif" />
-</p>
-
-#### Communicating Early
-&emsp;When I created the prefab for this projectile and added the physics layer / object tag, I saw all pre-existing physics layers in the project. After reading the project documentation, I realized the necessity for additional physics layers to be added so that the Space Invaders clone could behave in the same manner as its original. To be clear, this was before adding any enemies or shields into the game. I knew ahead of time that I would be detecting/ignoring collisions differently than what the current settings of the project allotted for. Specifically, I needed the player projectile to collide with the enemy projectile and the enemy while ignoring the player and the shield (allowing the player to strategically be positioned behind the shield and shoot through it). Simultaneously, I knew that the enemy projectile would need to collide with the shield, the player projectile, and the player while also ignoring the other enemies.
-
-&emsp;At this point in development, I reached out to the project manager communicating the need for these additions to the project. Since I did this as soon as I noticed the need, proper additions were made to the project’s collision matrix resulting in zero slow downs to other developers or merge conflicts in pull requests. In fact, when I started working on the Environment / Enemy stories a couple days later. I was able to start and complete my deliverables without any delay. If I had said nothing and just waited until I encountered that problem within the story, I would have been at a roadblock, unable to continue development for at least 2 days
-
-
-&emsp;Below is the newly editted collision matrix that I was permitted to make additions to. Notice how the "Shield", "Enemy Bullet", and "Player Bullet" have all been newly added on the left column with logic that is unique to any other previous layers.
 
 <p align=center>
-    <img src="https://github.com/Mawci/Live-Project-Unity/blob/main/images/collisionMatrix.png" />
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/skullPickup.png" />
 </p>
 
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/EnemyAttackwithArrowComp.png" />
+</p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/enemyhitdetection.gif" />
+</p>
+
+<p align=center>
+    <img src=" https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/tierableUpgradeLogic.png" /></p>
+    
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/physicsEditing.png" />
+</p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/buyableOverlapEvent.png" />
+</p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/animationBlending.png" />
+</p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/enemyhitdetection.gif" />
+</p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/overlapInteractable.gif" />
+</p>
 *Jump To: [Page Top](#introduction), [Game Scenes](#game-scenes), [Player Movement](#player-movement), [Animations](#animations), [Enemies](#enemies), [New Level](#new-level), [Game Over](#game-over), [Skills](#other-skills-learned)*
 ##
 
 ### Environment
 
-<!--### <p align="center">1.)Background</p>-->
-&emsp;In this story I began by implementing a background that scrolls to make it look like the player is moving through space. This is considered a parallax background where stacked images seem to “scroll endlessly” in the background. Through researching how this effect is achieved, I was able to write a script that takes a sprite image, moves it slowly, and resets the position every time it reaches a certain distance. By cleverly tracking its position and resetting it when it is divisible by its tiled height, the player doesn’t notice when the background image has reset.
+
+&emsp;In this story I began by implementing 
 
 
-First I cached the reference to the sprite and calculated the amount of pixels in one unit of the sprite's height as seen below.
-
-```c#
-private void SetupTexture()
-{
-    Sprite sprite = GetComponent<SpriteRenderer>().sprite;
-    singleTextureHeight = sprite.texture.height / sprite.pixelsPerUnit;
-}
-```
-
-Then Scroll() is called in the Update method to move the image, followed by a check to see if it is ready to be reset.
-
-```c#
-private void Scroll()
-{
-    float delta = moveSpeed * Time.deltaTime;
-    transform.position += new Vector3(0f, delta, 0f);
-}
-
-private void CheckReset()
-{
-    if ((Mathf.Abs(transform.position.y) - singleTextureHeight) > 0)
-    {
-        transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
-    }
-}
-```
 
 <p align=center>
-    <img src="https://github.com/Mawci/Live-Project-Unity/blob/main/Gifs/movingBackground.gif" /></p>
-    
-###### <p align="center"> The reset you see above is actually the video recording reset!<br/> The reset of the background happens here without you noticing.<br/> Try [playing the game](https://play.unity.com/en/games/1e29f742-4101-4814-abab-023970facbcd/space-invaders-clone) to see how seamless it is.</p><br/>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/titleScreen.png" />
+</p>
 
-<!--### <p align="center">2.)Shields</p>-->
-&emsp;The second part of this story was creating the shields that the player can take cover behind and effectively shoot through. However, when the shield takes damage from an enemy projectile, it needs to show a damaged state. To achieve this effect I created a script that holds an array of sprites. Each element in the array represents a different health state. Then when the correct collision happens, set the sprite renderer to the next element in the array. 
 
-&emsp;In the code below, the shield object checks if the collision is from an enemy projectile. If it is, then destroy the projectile and decrement the health of the shield. After decrementing, check to see if the shield needs to be destroyed or changed to a different sprite. 
+<!-- ###### <p align="center"> The reset you see above is actually the video recording reset!<br/> The reset of the background happens here without you noticing.<br/> Try [playing the game](https://play.unity.com/en/games/1e29f742-4101-4814-abab-023970facbcd/space-invaders-clone) to see how seamless it is.</p><br/>
+-->
 
-```c#
-private void OnCollisionEnter2D(Collision2D collision)
-{
-    if(collision.gameObject.CompareTag("EnemyBullet"))
-    {
-        Destroy(collision.gameObject);
-        health--;
-
-            if(health <= 0)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                sRenderer.sprite = states[health - 1];
-            }
-    }
-}
-```
-
-As you can see in the gif below from the completed game, the player is able to shoot through the shield and the shield changes its sprite only when hit by an enemy projectile.
 <p align=center>
     <img src="https://github.com/Mawci/Live-Project-Unity/blob/main/Gifs/ezgif.com-video-to-gif-converter.gif" /></p>
 
@@ -278,105 +210,7 @@ if(health <= 0)
 
 #### Explosion Particle Bug 
 &emsp;One issue I ran into when creating the animations was the explosion particle. Since I was attempting to instantiate the explosion particle as a game object at the location an enemy died, the last frame of the explosion would stay on the screen permanently. I needed to destroy the particle, but only after the animation had fully played once. I researched and referenced Unity’s documentation for solutions and found animation events. To solve this issue I implemented an animation event *(seen below)* on the last frame to call a function that would destroy itself.
-<p align=center>
-    <img src="https://github.com/Mawci/Live-Project-Unity/blob/main/images/animationEvent.png" /></p>
-    
-&emsp;This ensured all responsibilities for the explosion particle’s existence were self contained by accessing its own kill method *(seen below)* to remove itself from the game after playing its animation. This was a quick and simple fix for the implementation I chose to do.  
 
-```c#
-public class space_inv_explosion : MonoBehaviour
-{
-     public void Kill()
-    {
-        Destroy(gameObject);
-    }
-}
-```
-
-
-*Jump To: [Page Top](#introduction), [Game Scenes](#game-scenes), [Player Movement](#player-movement), [Player Abilites](#player-abilities), [Environment](#environment), [New Level](#new-level), [Game Over](#game-over), [Skills](#other-skills-learned)*
-
-##
-
-### Enemies
-
-&emsp;This was arguably the most difficult challenge I faced as I needed to move the entire wave of enemies at a set interval while still keeping track of the total number of enemies remaining on screen that would proportionally increase their speed. To tackle this problem, I made 2 scripts. One to hold a list of all the enemies so that they could be moved as a whole, and the other would reside on the enemy to be responsible for destroying and removing itself from the list. 
-
-In the wave script, I start by adding each object in the scene with the tag of “enemy” to the list.
-
-```c#
-void Start()
-{
-    foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-        {
-            alienWave.Add(enemy);
-        }
-}
-```
-Then, by keeping track and updating a float variable called "moveTimer" within the Update() function, I call a function named MoveEnemies() to loop through and move each enemy a set distance. By playtesting and tweaking this timer, you get a feeling of the enemies moving in "steps." 
-
-```c#
-void Update()
-{
-    if (moveTimer <= 0)
-    {
-         MoveEnemies();
-    }
-
-   moveTimer -= Time.deltaTime;
-}
-
- private void MoveEnemies()
-    {
-        if(alienWave.Count > 0)
-        {
-            //max is the varaible to check if the left or right bounds was touched
-            int max = 0;
-            for (int i = 0; i < alienWave.Count; i++)
-            {
-                
-                if(movingRight)
-                {
-                    alienWave[i].transform.position += horizontalDistance;
-                }
-                else
-                {
-                    alienWave[i].transform.position -= horizontalDistance;
-                }
-
-                if(alienWave[i].transform.position.x > maxRight || alienWave[i].transform.position.x < maxLeft)
-                {
-                    max++;
-                }
-            }
-
-            if (max > 0)
-            {
-                for (int i = 0; i < alienWave.Count; i++)
-                {
-                    alienWave[i].transform.position -= verticalDistance;
-                }
-
-                movingRight = !movingRight;
-            }
-
-            moveTimer = GetMoveSpeed();
-        }
-    }
-```
-&emsp;Above you can see the bool flag named "movingRight" to tell what direction the enemies should move. I combined this with a check after each move to see if the enemy wave hit the bounds of the screen called "max." If max was a value greater than 0, meaning the bounds of the screen were hit, then the enemies were moved down, changed directions, and max reset. After all movemement was complete, I called the GetMoveSpeed() function *(defined below)* to change the speed of the enemies based on the amount remaining. 
-
-```c#
-private float GetMoveSpeed()
-{
-    float time = alienWave.Count * moveTime;
-    return time;
-}
-```
-This gives the intended result of what you see below. When the number of enemies decrease, so does the time between each move interval.
-
-<p align=center>
-    <img src="https://github.com/Mawci/Live-Project-Unity/blob/main/Gifs/fasterEnemies.gif" /></p>
 
 #### Enemy Wave Error
 
