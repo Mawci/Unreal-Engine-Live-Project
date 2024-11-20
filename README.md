@@ -16,19 +16,19 @@
 &emsp;Below are descriptions of the stories I worked on, screenshots, gifs, and navigation links. I have also included all the .uassets of blueprints created for the game in this repository. If there are any details not included in this summary that you would like to know about, please feel free to contact me.
 
 ## User Stories
- * [Landscape and Structures](#landscape-and-structures)
- * [GameMode and HUD](#player-movement)
-   * Character Movement
-   * [Animations]()
-   * [Weapon Handling]()
-   * [Weapon Firing]()
+ * Story 1 [Landscape and Structures](#landscape-and-structures)
+ * Story 2 [GameMode and HUD](#player-movement)
+   * [Character Animations]()
+   * [Weapon Animations]()
+   * [Wepon Shooting]()
+   * [Shooting Logic]()
  * Story 3 [Collectibles / Obstacles](#player-abilities)
  * Story 4 [Menu](#environment)
  * Story 5 [Complete Gameplay](#animations)
  * Story 6 [Sound](#enemies)
 
  * [Skills](#other-skills-learned)
-   <!--* [Player Death](#player-death)-->
+
 ##
 
 ### Landscape and Structures
@@ -111,9 +111,6 @@ I created my own anaimation sequence by recording the weapon not moving. This wa
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/shootTestingwithspread.gif" />
 </p>
 
-<p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/HUD%20BINDINGS.png" width="600" width="338"/>
-</p>
 
 <p align=center>
     <img src="" />
@@ -130,41 +127,71 @@ I created my own anaimation sequence by recording the weapon not moving. This wa
 &emsp;For this story 
 <br/>
 <br/>
+### Interactable Objects 
 
+using interfaces
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/skullPickup.png" />
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/skullPickup.png" width="600" width="338" />
 </p>
 
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/EnemyAttackwithArrowComp.png" />
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/skullPickupOnOverlapCheck.png" width="600" width="338" />
 </p>
 
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/enemyhitdetection.gif" />
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/buyableCollisionBox.png" width="600" width="338"/>
 </p>
 
-<p align=center>
-    <img src=" https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/tierableUpgradeLogic.png" /></p>
-    
-<p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/physicsEditing.png" />
-</p>
 
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/buyableOverlapEvent.png" />
-</p>
-
-<p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/animationBlending.png" />
-</p>
-
-<p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/enemyhitdetection.gif" />
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/buyableOverlapEvent.png" width="600" width="338"/>
 </p>
 
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/overlapInteractable.gif" />
 </p>
+
+<p align=center>
+    <img src=" https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/tierableUpgradeLogic.png" width="600" width="338" />
+</p>
+
+
+    
+
+
+
+### Updating the HUD based on the state of the game
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/HUD%20BINDINGS.png" width="600" width="338"/>
+</p>
+
+###Enemy
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/animationBlending.png" width="600" width="338"/>
+</p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/physicsEditing.png" width="600" width="338"/>
+</p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/enemyhitdetection.gif" />
+</p>
+
+
+
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/EnemyAttackwithArrowComp.png" width="600" width="338"/>
+</p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/enemyAttacking.gif" />
+</p>
+
+
 *Jump To: [Page Top](#introduction), [Game Scenes](#game-scenes), [Player Movement](#player-movement), [Animations](#animations), [Enemies](#enemies), [New Level](#new-level), [Game Over](#game-over), [Skills](#other-skills-learned)*
 ##
 
@@ -183,170 +210,7 @@ I created my own anaimation sequence by recording the weapon not moving. This wa
 <!-- ###### <p align="center"> The reset you see above is actually the video recording reset!<br/> The reset of the background happens here without you noticing.<br/> Try [playing the game](https://play.unity.com/en/games/1e29f742-4101-4814-abab-023970facbcd/space-invaders-clone) to see how seamless it is.</p><br/>
 -->
 
-<p align=center>
-    <img src="https://github.com/Mawci/Live-Project-Unity/blob/main/Gifs/ezgif.com-video-to-gif-converter.gif" /></p>
 
-#### Shield Error
-&emsp;Unfortunately, the way that I initially implemented this shield would cause a game crash later on in development. I needed to come back to this script when I encountered a null reference exception from attempting to reset the health of the shield for a new wave. Since I called Destroy(gameObject) on the shield whenever the health reached zero, I could no longer access it inside of the game manager script when I needed to reset its health because it didn’t exist.
-
-&emsp;To solve this problem, I changed one line of code from above, to what you now see below. The .SetActive() method changes the active state of the game object to false instead of destroying it. Therefore, the shield still exists when its health reaches zero and is simply invisible to the player. This fixed the issue and the game no longer crashed when attempting to load a new wave.
-
-```c#
-if(health <= 0)
-{
-    gameObject.SetActive(false);
-}
-
-```
-
-
-*Jump To: [Page Top](#introduction), [Game Scenes](#game-scenes), [Player Movement](#player-movement), [Player Abilites](#player-abilities), [Enemies](#enemies), [New Level](#new-level), [Game Over](#game-over), [Skills](#other-skills-learned)*
-
-##
-
-### Animations
-
-&emsp;In this story I created and became quite efficient with the workflow for 2D animations. From importing, splicing, and editing sprites, to creating animation controllers and sequences. I built and tweaked the animations for the enemies to better match the speed of the original Space Invaders game. 
-
-#### Explosion Particle Bug 
-&emsp;One issue I ran into when creating the animations was the explosion particle. Since I was attempting to instantiate the explosion particle as a game object at the location an enemy died, the last frame of the explosion would stay on the screen permanently. I needed to destroy the particle, but only after the animation had fully played once. I researched and referenced Unity’s documentation for solutions and found animation events. To solve this issue I implemented an animation event *(seen below)* on the last frame to call a function that would destroy itself.
-
-
-#### Enemy Wave Error
-
-&emsp;Through thorough playtesting later in development, I discovered a crash that would occur with the wave script when the player attempted to play again. I came back to this script to debug it and found a situation that could occur where enemies are added to the list that's not empty. This scenario specifically occurs when a player dies in a previous game and launches another. All the enemies from the previous game stay in the list and the new game enemies are added to it. Then when the wave script attempts to move the enemies, it crashes because the enemies from the previous game no longer exist. By stepping through the problem to see why the error was happening, I was able to add a simple line of code *(seen below)* to clear the list of enemies to always ensure an empty list on a new game. 
-
-```c#
-void Start()
-    {
-        alienWave.Clear();
-        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-        {
-            alienWave.Add(enemy);
-        }
-    }
-```
-
-*Jump To: [Page Top](#introduction), [Game Scenes](#game-scenes), [Player Movement](#player-movement), [Player Abilites](#player-abilities), [Environment](#environment), [Animations](#animations), [Game Over](#game-over), [Skills](#other-skills-learned)*
-
-##
-<!--
-### Player Death
-
-![](https://github.com/Mawci/Live-Project-Unity/blob/main/Gifs/playerDeath-video-to-gif-converter.gif)
-*Jump to: [top](#live-project)*
-
-##
--->
-### New Level
-
-&emsp;In this story I was responsible for adding additional levels to the game. To accomplish this, I added a game manager script with a method to load a new wave of enemies. Going into this, I knew I wanted other scripts in the game to have access to the functions in the game manager such as an ability to spawn a new wave, update the UI, or reset the health of the barriers. Therefore I made use of the singleton pattern.
-
-
-```c#
-private static space_inv_game_manager instance;
-private void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-```
-
-I then made a coroutine that will wait 2 seconds before spawning in a new wave that randomly instantiates an enemy wave prefab which allows for different arrangements of enemies as the player progresses through the game.
-
-```c#
-public static void SpawnNewWave()
-{
-   instance.StartCoroutine(instance.SpawnWave());
-}
-
-private IEnumerator SpawnWave()
-{
-   if(currentSet != null)
-   {
-      Destroy(currentSet);
-   }
-
-   yield return new WaitForSeconds(2);
-
-   currentSet = Instantiate(alienWaveSet[UnityEngine.Random.Range(0, alienWaveSet.Length)], spawnPosition, Quaternion.identity);
-   space_inv_HUD.UpdateWave();
-
-   if(firstWave)
-   {
-      firstWave = false;
-   }
-   else
-   {
-      ResetBarriers();
-      ChangeBackground();
-   }
-}
-```
-The boolean flag "firstWave" above checks to see if the level needs to reload the barriers or change the background. After the initial wave, every call to the method will reset the all the shields health and change the background. Those methods are defined below. 
-
-```c#
-private void ResetBarriers()
-    {
-        for (int i = 0; i < barriers.Length; i++)
-        {
-            barriers[i].SetActive(true);
-            barriers[i].GetComponent<space_inv_barrier>().ResetHealth();
-        }
-    }
-
-    private void ChangeBackground()
-    {
-        backgroundPlanets.GetComponent<space_inv_background_controller>().ChangeBackgroundPlanets();
-        backgroundStars.GetComponent<space_inv_background_controller>().ChangeBackgroundStars();
-    }
-```
-&emsp;Coincidently, this is where I ran into the error with the [shield](#shield-error) and had to spend time debugging. Now properly fixed, you can see how the game manager spawns in a new wave when the last enemy is defeated, the shields are set back to full health, the background is changed, and the wave number in the upper right corner is updated. 
-
-<p align=center>
-    <img src="https://github.com/Mawci/Live-Project-Unity/blob/main/Gifs/newWaveSpawn.gif" /></p>
-
-
-*Jump To: [Page Top](#introduction), [Game Scenes](#game-scenes), [Player Movement](#player-movement), [Player Abilites](#player-abilities), [Environment](#environment), [Animations](#animations), [Enemies](#enemies), [Skills](#other-skills-learned)*
-##
-
-### Game Over
-
-&emsp;In this story I needed to trigger a game over whenever the player would lose their last life. To do this, I simply added a check in the player script to see if the player lives were equal to zero. If they were equal to zero, load the game over scene.
-```c#
-if(playerStats.currentLives == 0)
-{
-   playerScore.UpdateScore(space_inv_HUD.GetScore());
-   playerScore.UpdateWave(space_inv_HUD.GetWave());
-   menu.GameOver();
-}
-```
-&emsp;The problem with this, however, is that the score and wave number would not persist to the game over screen. The player wouldn’t see how many points they accumulated or waves survived because the player score script creates a new instance on scene load. To properly achieve score that persists across scenes, I referenced Unity’s documentation to effectively implement the “DontDestoryOnLoad()” method. You can see how I added it to the player score script below. 
-
-```c#
-private void Awake()
-{
-   int numScoreSessions = FindObjectsOfType<space_inv_score>().Length;
-   if(numScoreSessions > 1)
-   {
-      Destroy(gameObject);
-   }
-   else
-   {
-   DontDestroyOnLoad(gameObject);
-   }
-}
-```
-Now with this added, the score will persist onto the game over scene to show how many waves were survived with their total points.
-
-<p align=center>
-    <img src="https://github.com/Mawci/Live-Project-Unity/blob/main/Gifs/gameOver.gif" /></p>
 
 ## Other Skills Learned
 
