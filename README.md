@@ -18,15 +18,15 @@
 ## User Stories
  * [Landscape and Structures](#landscape-and-structures)
  * [GameMode and HUD](#player-movement)
+   * Character Movement
    * [Animations]()
    * [Weapon Handling]()
    * [Weapon Firing]()
- * [Player Abilites](#player-abilities)
- * [Environment](#environment)
- * [Animations](#animations)
- * [Enemies](#enemies)
- * [New Level](#new-level)
- * [Game Over](#game-over)
+ * Story 3 [Collectibles / Obstacles](#player-abilities)
+ * Story 4 [Menu](#environment)
+ * Story 5 [Complete Gameplay](#animations)
+ * Story 6 [Sound](#enemies)
+
  * [Skills](#other-skills-learned)
    <!--* [Player Death](#player-death)-->
 ##
@@ -34,25 +34,29 @@
 ### Landscape and Structures
 
 
-&emsp; In this story I was responsible for creating a menu scene, game scene, and game-over scene. I worked with Unity’s UI elements to design a menu with buttons and custom font to more accurately represent the Space Invader theme. I referred to the Unity documentation and uploaded a new font to the project. From there, I was able to convert it to a new font asset that could be used as a Text Mesh Pro object.  
+&emsp; In this story I was responsible for creating a level for the game. The  playable area doesn't need to be big, but should allow for at least a few structures.  
+
+
+^Description
+started with the landscaping tool to create the terrain of the level. ran into a problem with the materials looking extremely unnatural and refrence the material instance to change the scale of the tile and now the dirt and terrain look natural. 
+next imported assets and learned the workflow from Fab, Cosmos, and Sketchfab3d. I had to explore myself on this as Unreal Engine had just migrated all of its Marketplace and Quixel bridge into Fab.
+Many of the imported assets had terrible collision boxes that were not representabive of the meshes. I there for went through every imported asset, removing the collision and adding custom collision to each on. I did this knowing that the player would be relying on every bit of real estate in the map to avoid being killed and it would only lead to frustration for the player being blocked by invisible walls. I also increase some collision boxes like the one you see below to ensure the player stayed within the boundary of the map, this was after discovering the player could strafe jump ontop of the fence.
 
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/foliageMode.png" /></p>
-    
- include image with full structure assets...
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/customCollision.png" width="1000" /></p>
+With all of the asset collision boxes edited, I built a small area the player could walk aroun in. Started out as you can see below. 
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/environment.png" width="1000" /></p>
+trees and foliage were added afterwards with use of the foliage mode editor in unreal engine. customizing the active brush size and density ensure variations in certain types of plants that helped to break up the scene and add a feeling of immersion. 
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/foliageMode.png" width="1000" /></p>
 
-<p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/customCollision.png" /></p>
- 
-<p align=center>
-<img src="https://github.com/Mawci/Live-Project-Unity/blob/main/Gifs/loadScreen-ezgif.com-video-to-gif-converter.gif" />
-</p>
-<br/>
+
 <!--
 ![](https://github.com/Mawci/Live-Project-Unity/blob/main/Gifs/loadScreen-ezgif.com-video-to-gif-converter.gif)
 -->
 
-&emsp; There was already built-in functionality in the main game to handle scene transitions so instead of writing code for a new animation sequence, I created a local menu script that referenced the scene loader class. Then I referenced the project documentation to properly call and load the corresponding scenes on button click events. 
+
 
 
 *Jump To: [Page Top](#introduction), [Player Abilites](#player-abilities), [Environment](#environment), [Animations](#animations), [Enemies](#enemies), [New Level](#new-level), [Game Over](#game-over), [Skills](#other-skills-learned)*
@@ -63,14 +67,48 @@
 &emsp;This story was seemingly simple as the movement in Space Invaders is not too complex, however I still ran into a bug that I needed to carefully step through. Initially, I used transform.Translate() to move the player using its horizontal vector multipied by a constant speed. This worked, but I needed a way to ensure the player stayed within the viewable bounds of the screen. To solve this, I created two variables that would hold the maximum position on the right and left sides of the screen before going out of view. Then I did a simple check to see if the player was within those two values. If they were, then allow input to move the player.
 <br/> <br/>
 
-```c#
-if(transform.position.x >= maxLeft && transform.position.x <= maxRight)
-{
-     float translation = Input.GetAxis("Horizontal") * playerStats.shipSpeed;
-     translation *= Time.deltaTime;
-     transform.Translate(translation, 0, 0);
-}
-```
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/BlendSpace.png"  />
+</p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/layeredblendBone.png"  />
+</p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/addingWeapon2Socket.gif" />
+</p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/locomotion.gif" />
+</p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/linetracesocket.png"  />
+</p>
+    
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/weaponfiringanimation.gif"  /> 
+</p>
+
+
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/LineTraceScreenShot.png"  />
+</p>
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/weaponShootScreenshot.png" />
+</p>
+
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/shootTestingwithspread.gif" />
+</p>
+<p align=center>
+    <img src="" />
+</p>
+
 #### Movement Bug
 &emsp;Through playtesting, I discovered that this wouldn’t always work. Since I was using transform.Translate() to move, the player would sometimes move faster than the check to see if it was within the bounds. Therefore, it would go past the boundary to then be perpetually stuck and no longer able to register input. To solve this bug I added two additional checks after the player movement to see if the player was outside the bounds. If they were outside the bounds, (which would mean they can never move again) then reset the player position back to the maximum right/left position. This way, if a player managed to go past the edge, the next line of code would quickly reposition them so that the next Update function call (checking if the player position is valid) would return true, allowing the player to move again.
 
