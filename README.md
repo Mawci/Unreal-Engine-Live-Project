@@ -12,10 +12,11 @@
 <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/trailer.gif" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"/>
 </p>
 
+
 &emsp;Below are descriptions of the stories I worked on, screenshots, gifs, and navigation links. I have also included all the .uassets of blueprints created for the game in this repository. If there are any details not included in this summary that you would like to know about, please feel free to contact me.
 
 ## User Stories
- * [Landscape and Structures](#game-scenes)
+ * [Landscape and Structures](#landscape-and-structures)
  * [GameMode and HUD](#player-movement)
    * [Animations]()
    * [Weapon Handling]()
@@ -30,12 +31,19 @@
    <!--* [Player Death](#player-death)-->
 ##
 
-### Game Scenes
+### Landscape and Structures
 
 
 &emsp; In this story I was responsible for creating a menu scene, game scene, and game-over scene. I worked with Unity’s UI elements to design a menu with buttons and custom font to more accurately represent the Space Invader theme. I referred to the Unity documentation and uploaded a new font to the project. From there, I was able to convert it to a new font asset that could be used as a Text Mesh Pro object.  
-    
 
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/foliageMode.png" /></p>
+    
+ include image with full structure assets...
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/customCollision.png" /></p>
+ 
 <p align=center>
 <img src="https://github.com/Mawci/Live-Project-Unity/blob/main/Gifs/loadScreen-ezgif.com-video-to-gif-converter.gif" />
 </p>
@@ -46,27 +54,7 @@
 
 &emsp; There was already built-in functionality in the main game to handle scene transitions so instead of writing code for a new animation sequence, I created a local menu script that referenced the scene loader class. Then I referenced the project documentation to properly call and load the corresponding scenes on button click events. 
 
-```c#
-public class MenuScript : MonoBehaviour
-{
-    public SceneLoader loader;
 
-    public void PlayGame()
-    {
-        loader.LoadSceneName("space_inv_game_scene");
-    }
-
-    public void GameOver()
-    {
-        loader.LoadSceneName("space_inv_game_over_scene");
-    }
-
-    public void SpaceInvadersMenu()
-    {
-        loader.LoadSceneName("space_inv_menu_scene");
-    }
-}
-```
 *Jump To: [Page Top](#introduction), [Player Abilites](#player-abilities), [Environment](#environment), [Animations](#animations), [Enemies](#enemies), [New Level](#new-level), [Game Over](#game-over), [Skills](#other-skills-learned)*
 ##
 
