@@ -15,7 +15,7 @@
 &emsp;Below are descriptions of the stories I worked on, screenshots, gifs, and navigation links. I have also included all the .uassets of blueprints created for the game in this repository. If there are any details not included in this summary that you would like to know about, please feel free to contact me.
 
 ## User Stories
- * [LandScape and Structures](#game-scenes)
+ * [Landscape and Structures](#game-scenes)
  * [GameMode and HUD](#player-movement)
    * [Animations]()
    * [Weapon Handling]()
