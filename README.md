@@ -22,11 +22,9 @@
    * [Terrain](#terrain)
    * [Assets](#assets)
    * [Foliage](#foliage)  
- * Story 2 [GameMode and HUD](#player-movement)
-   * [Character Animations]()
-   * [Weapon Animations]()
-   * [Wepon Shooting]()
-   * [Shooting Logic]()
+ * Story 2 [GameMode and HUD](#gamemode-and-hud)
+   * [Character Animations](#character-animations)
+   * [Shooting](#shooting)
  * Story 3 [Collectibles / Obstacles](#player-abilities)
  * Story 4 [Menu](#environment)
  * Story 5 [Complete Gameplay](#animations)
@@ -38,12 +36,12 @@
 
 ### Landscape and Structures
 
-&emsp;In this story I was responsible for creating a level for the game. The description of the story stated, "playable area doesn't need to be big, but should allow for at least a few structures."  
+&emsp;In this story I was responsible for creating a level for the game. The description of the story stated, *"playable area doesn't need to be big, but should allow for at least a few structures."*  
 
-#### Terrain
+#### <p align="center">Terrain</p>
 With this in mind, I started learning the landscaping tool to create the terrain of the level. I learned about the masks to use in the modeler and broke up the level with mountains in the background and some uneven slopes in the playable area. I wanted to keep the playable area relatively flat as I wanted to have enemies chasing the character and was unsure how it might impact their navigation. The first problem I ran into was when I added a ground texture to the terrain, it looked extremely unnatural. When the texture repeated, it resembled something similar to thousands of minecraft blocks. I was able to solve this when I found a guide on learn.unrealengine that talked about reference materials. By editing the scale of the reference material for the ground texture, I was able to make the terrain look natural without any indication of repetition.
  
-#### Assets
+#### <p align="center">Assets</p>
 Next, I began importing assets and learned the workflow from Fab, Cosmos, and Sketchfab3d. Most of the assets used in this game came from Fab. This is an example where I had to teach myself as Unreal Engine had just migrated all of its Marketplace and Quixel bridge into it. Every guide and forum I found on the internet referencing asset integration were using the deprecated methods whereas everything I found written about Fab seemed to be nothing more than marketing and launch hype. I'm hopeful the kinks will get straightened out in the future but through using Fab during this project, I experienced many bugs, loss of content that was originally in my marketplace, numerous crashes, and lag.
 
 A few lessons learned:
@@ -64,13 +62,13 @@ In some situations like  with the fence assets below,  I increased  the collisio
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/customCollision.png" width="600" width="338" />
 </p>
 
-After collision editing, I built a small area resembling a ghost town that the player could walk around in. Also noticed how the repeating texture of the ground seems unnoticeable and natural. 
+After collision editing, I built a small area resembling a ghost town that the player could walk around in, as you can see below. Also notice how the repeating texture of the ground seems unnoticeable and natural. 
 
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/environment.png" width="600" width="338" />
 </p>
 
-#### Foliage
+#### <p align="center">Foliage</p>
 To complete this story, I utilized the foliage mode in the editor to add some life. Customizing the active brush size and density ensured different variations of fields or plant types, helping to break up the scene with an added sense of immersion.
 
 <p align=center>
@@ -87,37 +85,42 @@ To complete this story, I utilized the foliage mode in the editor to add some li
 *Jump To: [Page Top](#introduction), [Player Abilites](#player-abilities), [Environment](#environment), [Animations](#animations), [Enemies](#enemies), [New Level](#new-level), [Game Over](#game-over), [Skills](#other-skills-learned)*
 ##
 
-### Player Movement
+### Gamemode and HUD 
 
-&emsp;This story was seemingly simple as the movement in Space Invaders is not too complex, however I still ran into a bug that I needed to carefully step through. Initially, I used transform.Translate() to move the player using its horizontal vector multipied by a constant speed. This worked, but I needed a way to ensure the player stayed within the viewable bounds of the screen. To solve this, I created two variables that would hold the maximum position on the right and left sides of the screen before going out of view. Then I did a simple check to see if the player was within those two values. If they were, then allow input to move the player.
+&emsp;This story had a description of, *"set up your GameMode and create a Heads Up Display. The GameMode will dictate how the level will function as well as the default pawn that will spawn when the level loads."* I first prioritized these minimum deliverables by adding the 3rd person gamemode to the level settings, changing the default pawn to the 3rd person character blueprint, and creating a widget blueprint that had placeholders for ammo and health. This ensured that I completed what was expected so that I could develop further functionality without fear of falling behind schedule or delaying completion. 
 <br/> <br/>
-retargeted the animations using unreals retargeter and then created a blendspace
-created 2 different blendspaces for the character animation blueprint based on the speed. I set the max speed knowing that I would need to be faster than the max speed of the enemies. Below you can see the 
+#### <p align="center">Character Animations</p>
+&emsp;There were countless ideas that came to mind to build out this gamemode, each one more creative and fun than the last, but I knew how to implement none of them. In an attempt to break down the overwhelming mountain of information I had to learn, I started with the most basic thing I could think of. Character animations. Make the character look like they're holding a gun. This was a small enough step for me to break down into something actionable. I imported a free animation pack from Fab, retargeted the animations for the current version of Unreal Engine’s mannequin, and started building out a blendspace for the character. 
+
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/BlendSpace.png" width="600" width="338" />
 </p>
 
-with the blendspace created I then blended them in the animation blueprint to combine the lower anims of the locomotions with the uper anims of holding a rifle
+
+This worked, but I wanted to utilize walking/running animations for the bottom half of the character while the character's arms continued to hold a rifle. After looking up how this can be achieved, I created a separate blendspace so that the character now had independant upper and lower body animation. Then in the animation blueprint, as you can see below, I was able to combine the two animations by use of the “layered blend per bone” node implementing it from the spine_03 bone downwards.
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/layeredblendBone.png" width="600" width="338" />
 </p>
 
-with the animation set, now I learned how to attach object to skeleton meshes by creating sockets. i created a right hand socket on the bone of the right hand and added the weapon skeleton mesh to the socket of the character mesh. Then minor adjustments to the rotation of the weapon made the weapon holding animation look more realistic.
+With the animations set, I then learned that meshes can be attached to other meshes by use of sockets. By adding a socket to the character’s skeleton mesh as seen below, I was able to then add a weapon mesh and adjust the rotation to make it seem like it is being held.
+
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/addingWeapon2Socket.gif" />
 </p>
-The combination of the blending and weapon in the socket started to make the game feel like a shooter. Below you can see the first stages of the character moving with just those few additions. 
+
+With just the additions of animation blending and rifle holding, the game was already starting to feel like a shooter. 
+
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/locomotion.gif" />
 </p>
 
-SHOOTING
-Next was getting the weapon to shoot. I edited the skeleton mesh of the weapon to add a socket similarly. This was so I would have a place to add particle animations and intially I did my debug lines from this when shooting. (later I found out that it felt to unnatural and I need to change the starting position of the line trace.
+#### <p align="center">Shooting</p>
+Next was getting the weapon to shoot. My goal was to simply show a flash indicating the weapon had been fired when the player hit the left mouse button. I wanted to have control over where that flash would be located, so learning off of what I did previously, I added a socket to the rifle mesh on the barrel. My plan was to access the mesh, get the location of the socket, and spawn in a particle effect.
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/linetracesocket.png" width="600" width="338" />
 </p>
 
-I created my own anaimation sequence by recording the weapon not moving. This was perfect bc all the animations of the gun were only going to be the it flashing. I learned about animation notifies and below I added a notify to spawn a particle during the shoot animation. It was only the starter content explosion for a placeholder until I later imported a muzzleflash effect, but it served its purpose.  
+I soon learned this implementation was problematic as the player should not be responsible for spawning in the particles for the weapon object. That’s because if I wanted to expand on the weapons behavior (like adding sound effects or more particles,) I would always need to go into the character blueprint to update it– leading to an extensibility nightmare. I read that it is better practice for the object to handle all responsibilities pertaining to it. A common way of doing that is by playing an animation with event notifies. Therefore I recorded a new animation sequence of the weapon to represent firing, with added notifications for sound and vfx.  
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/weaponfiringanimation.gif"  /> 
 </p>
