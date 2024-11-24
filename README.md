@@ -19,6 +19,9 @@
 
 ## User Stories
  * Story 1 [Landscape and Structures](#landscape-and-structures)
+   * [Terrain](#terrain)
+   * [Assets](#assets)
+   * [Foliage](#foliage)  
  * Story 2 [GameMode and HUD](#player-movement)
    * [Character Animations]()
    * [Weapon Animations]()
@@ -35,21 +38,41 @@
 
 ### Landscape and Structures
 
+&emsp;In this story I was responsible for creating a level for the game. The description of the story stated, "playable area doesn't need to be big, but should allow for at least a few structures."  
 
-&emsp; In this story I was responsible for creating a level for the game. The  playable area doesn't need to be big, but should allow for at least a few structures.  
+#### Terrain
+With this in mind, I started learning the landscaping tool to create the terrain of the level. I learned about the masks to use in the modeler and broke up the level with mountains in the background and some uneven slopes in the playable area. I wanted to keep the playable area relatively flat as I wanted to have enemies chasing the character and was unsure how it might impact their navigation. The first problem I ran into was when I added a ground texture to the terrain, it looked extremely unnatural. When the texture repeated, it resembled something similar to thousands of minecraft blocks. I was able to solve this when I found a guide on learn.unrealengine that talked about reference materials. By editing the scale of the reference material for the ground texture, I was able to make the terrain look natural without any indication of repetition.
+ 
+#### Assets
+Next, I began importing assets and learned the workflow from Fab, Cosmos, and Sketchfab3d. Most of the assets used in this game came from Fab. This is an example where I had to teach myself as Unreal Engine had just migrated all of its Marketplace and Quixel bridge into it. Every guide and forum I found on the internet referencing asset integration were using the deprecated methods whereas everything I found written about Fab seemed to be nothing more than marketing and launch hype. I'm hopeful the kinks will get straightened out in the future but through using Fab during this project, I experienced many bugs, loss of content that was originally in my marketplace, numerous crashes, and lag.
 
+A few lessons learned:
+* Save the project before opening Fab
+* If importing more than one asset at a time it is better to import it to a blank project and migrate the asset to your working environment
+* Close out of Fab and restart Unreal Engine after importing
+* If importing assets from the same publisher at different times, you may need to manually rename the folder the assets are in or the new ones will not show up 
 
-^Description
-started with the landscaping tool to create the terrain of the level. ran into a problem with the materials looking extremely unnatural and refrence the material instance to change the scale of the tile and now the dirt and terrain look natural. 
-next imported assets and learned the workflow from Fab, Cosmos, and Sketchfab3d. I had to explore myself on this as Unreal Engine had just migrated all of its Marketplace and Quixel bridge into Fab.
-Many of the imported assets had terrible collision boxes that were not representabive of the meshes. I there for went through every imported asset, removing the collision and adding custom collision to each on. I did this knowing that the player would be relying on every bit of real estate in the map to avoid being killed and it would only lead to frustration for the player being blocked by invisible walls. I also increase some collision boxes like the one you see below to ensure the player stayed within the boundary of the map, this was after discovering the player could strafe jump ontop of the fence.
+Every asset imported had collision boxes that were not representative of the meshes.  I therefore went through each asset, removing the default collision and customizing it.
 
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/customCollision.png" width="600" width="338" /></p>
-With all of the asset collision boxes edited, I built a small area the player could walk aroun in. Started out as you can see below. 
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/mutipleColliders.png" width="600" width="338" />
+</p>
+
+In some situations like  with the fence assets below,  I increased  the collisions to ensure the player couldn't escape the boundary of the map by jumping over it.
+
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/environment.png" width="600" width="338" /></p>
-trees and foliage were added afterwards with use of the foliage mode editor in unreal engine. customizing the active brush size and density ensure variations in certain types of plants that helped to break up the scene and add a feeling of immersion. 
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/customCollision.png" width="600" width="338" />
+</p>
+
+After collision editing, I built a small area resembling a ghost town that the player could walk around in. Also noticed how the repeating texture of the ground seems unnoticeable and natural. 
+
+<p align=center>
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/environment.png" width="600" width="338" />
+</p>
+
+#### Foliage
+To complete this story, I utilized the foliage mode in the editor to add some life. Customizing the active brush size and density ensured different variations of fields or plant types, helping to break up the scene with an added sense of immersion.
+
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/foliageMode.png" width="600" width="338" /></p>
 
