@@ -15,7 +15,7 @@
 
 &emsp;Below are descriptions of the stories I worked on, screenshots, gifs, and navigation links. I have also included all the .uassets of blueprints created for the game in this repository. If there are any details not included in this summary that you would like to know about, please feel free to contact me.
 
-# Please note this summary is unfinished as the game was just completed 11/17/2024
+# *Please note this summary is unfinished as the game was just completed 11/17/2024*
 
 ## User Stories
  * Story 1 [Landscape and Structures](#landscape-and-structures)
@@ -25,7 +25,7 @@
  * Story 2 [GameMode and HUD](#gamemode-and-hud)
    * [Character Animations](#character-animations)
    * [Shooting](#shooting)
- * Story 3 [Collectibles / Obstacles](#player-abilities)
+ * Story 3 [Collectables / Obstacles](#collectables-obstacles)
  * Story 4 [Menu](#environment)
  * Story 5 [Complete Gameplay](#animations)
  * Story 6 [Sound](#enemies)
@@ -115,47 +115,48 @@ With just the additions of animation blending and rifle holding, the game was al
 </p>
 
 #### <p align="center">Shooting</p>
-Next was getting the weapon to shoot. My goal was to simply show a flash indicating the weapon had been fired when the player hit the left mouse button. I wanted to have control over where that flash would be located, so learning off of what I did previously, I added a socket to the rifle mesh on the barrel. My plan was to access the mesh, get the location of the socket, and spawn in a particle effect.
+&emsp;Next was getting the weapon to shoot. My goal was to simply show a flash indicating the weapon had been fired when the player hit the left mouse button. I wanted to have control over where that flash would be located, so learning off of what I did previously, I added a socket to the rifle mesh on the barrel. My plan was to access the mesh, get the location of the socket, and spawn in a particle effect.
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/linetracesocket.png" width="600" width="338" />
 </p>
 
-I soon learned this implementation was problematic as the player should not be responsible for spawning in the particles for the weapon object. That’s because if I wanted to expand on the weapons behavior (like adding sound effects or more particles,) I would always need to go into the character blueprint to update it– leading to an extensibility nightmare. I read that it is better practice for the object to handle all responsibilities pertaining to it. A common way of doing that is by playing an animation with event notifies. Therefore I recorded a new animation sequence of the weapon to represent firing, with added notifications for sound and vfx.  
+&emsp;I soon learned this implementation was problematic as the player should not be responsible for spawning in the particles for the weapon object. That’s because if I wanted to expand on the weapons behavior (like adding sound effects or more particles) I would always need to go into the character blueprint to update it– leading to an extensibility nightmare. I read that it is better practice for the object to handle all responsibilities pertaining to it. A common way of doing that is by playing an animation with event notifies. Therefore I recorded a new animation sequence of the weapon to represent firing, with added notifications for sound and vfx.  
+
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/weaponfiringanimation.gif"  /> 
 </p>
 
+&emsp;The next functionality I needed to learn was actually making the weapon shoot. There were a couple ways of doing this but I implemented a line trace projected from the bullet’s muzzle socket to where the player is looking. To do this, I simply called the animation of the weapon firing when the left mouse button was held and called a line trace. If the left mouse button. I then had a branch checking if the button was still held to continue shooting. Below you can see a snapshot of the shoot function calling the fire animation and an animation that adds recoil to the character. 
 
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/LineTraceScreenShot.png" width="600" width="338" />
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/weaponShootScreenshot.png"  />
 </p>
 
 <p align=center>
-    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/weaponShootScreenshot.png" width="600" width="338" />
+    <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/LineTraceScreenShot.png"  />
 </p>
 
+&emsp;Above is the implementation of the line trace when called by the shoot function. Notice how I added different random variations to the end location of the trace depending on the player aiming or hip firing. I realize there are many more sophisticated ways to implement a bullet spread system, but this was quick and served its purpose for incentivising the player to aim to be more accurate. This was also and area I had to return to after playtesting. Since I initially had the start position of the line trace at the muzzle of the gun, there would be many situations where traces towards closer objects would hit without the crosshairs being over it. This wasn't telegraphed well to the player and I personally found it frustrating when missing enemies because they were too close to me. To fix this I calculated the center point of the screen and projected it to world space for the start position. With that, the trace would always hit what the crosshair was hovered over, eliminating any discrepancies.
 
+
+&emsp;By the end of this story, I had a complete shooting functionality and animations for moving around the level. You can see below the difference in variations for the line traces depending on aiming or hip firing.
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/gifs/shootTestingwithspread.gif" />
 </p>
 
-
-<p align=center>
-    <img src="" />
-</p>
 
 
 *Jump To: [Page Top](#introduction), [Game Scenes](#game-scenes), [Environment](#environment), [Animations](#animations), [Enemies](#enemies), [New Level](#new-level), [Game Over](#game-over), [Skills](#other-skills-learned)*
 
 ##
 
-### Player Abilities Collectables Obstacles
+###  Collectables Obstacles
 
 
-&emsp;For this story 
+&emsp; *"This story will be completed when you have collectables that update your HUD when collected and obstacles throughout your level"*
 <br/>
 <br/>
-### Interactable Objects 
+
 
 using interfaces
 <p align=center>
@@ -194,7 +195,7 @@ using interfaces
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/HUD%20BINDINGS.png" width="600" width="338"/>
 </p>
 
-###Enemy
+### Enemy
 
 <p align=center>
     <img src="https://github.com/Mawci/Unreal-Engine-Live-Project/blob/main/images/animationBlending.png" width="600" width="338"/>
