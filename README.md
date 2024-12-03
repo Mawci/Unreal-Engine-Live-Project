@@ -18,19 +18,15 @@
 # *Please note this summary has been migrated into a full [portfolio](https://mawci.github.io)*
 
 ## User Stories
- * Story 1 [Landscape and Structures](#landscape-and-structures)
+ * [Landscape and Structures](#landscape-and-structures)
    * [Terrain](#terrain)
    * [Assets](#assets)
    * [Foliage](#foliage)  
- * Story 2 [GameMode and HUD](#gamemode-and-hud)
+ * [GameMode and HUD](#gamemode-and-hud)
    * [Character Animations](#character-animations)
    * [Shooting](#shooting)
- * Story 3 [Collectables / Obstacles](#collectables-obstacles)
- * Story 4 [Menu](#environment)
- * Story 5 [Complete Gameplay](#animations)
- * Story 6 [Sound](#enemies)
-
- * [Skills](#other-skills-learned)
+ * [Collectables / Obstacles](#collectables-obstacles)
+ * [Menu](#environment)
 
 ##
 
@@ -80,9 +76,6 @@ To complete this story, I utilized the foliage mode in the editor to add some li
 -->
 
 
-
-
-*Jump To: [Page Top](#introduction), [Player Abilites](#player-abilities), [Environment](#environment), [Animations](#animations), [Enemies](#enemies), [New Level](#new-level), [Game Over](#game-over), [Skills](#other-skills-learned)*
 ##
 
 ### Gamemode and HUD 
@@ -146,14 +139,12 @@ With just the additions of animation blending and rifle holding, the game was al
 
 
 
-*Jump To: [Page Top](#introduction), [Game Scenes](#game-scenes), [Environment](#environment), [Animations](#animations), [Enemies](#enemies), [New Level](#new-level), [Game Over](#game-over), [Skills](#other-skills-learned)*
+
 
 ##
 
 ###  Collectables Obstacles
 
-
-&emsp; *"This story will be completed when you have collectables that update your HUD when collected and obstacles throughout your level"*
 <br/>
 <br/>
 
@@ -241,22 +232,3 @@ using interfaces
 
 
 
-## Other Skills Learned
-
-* Gained practical experience collaborating with a team of developers in a Scrum environment, participating in sprint planning, retrospectives, and daily stand-ups to enhance project efficiency.
-* Demonstrated adaptability by seamlessly integrating into ongoing development, quickly mastering custom naming conventions and workflows for Azure DevOps, and utilizing Git for version control.
-* Proactively identified potential issues before they escalated, [communicating](#communicating-early) effectively with the project manager to prevent downtime and ensure smooth development processes.
-* Actively communicated with team members, providing support in problem-solving during stand-up meetings. For example, I assisted a fellow developer in troubleshooting 2D collision detection, resulting in a faster resolution.
-* Ability to research and learn material that I am unfamiliar with. Several examples throughout this project where I needed to reference the Unity documentation to successfully implement features.
-  * [Animation events](#explosion-particle-bug)
-  * [New Font Assets](#game-scenes)
-  * [Parallax Background](#environment)
-  * [Persistent Data](#game-over)
-* Gained hands-on experience in debugging by systematically identifying and resolving errors, fostering a deeper understanding of the development process and enhancing my problem-solving abilities.
-  * [Input Bug](#movement-bug)
-  * [Bullet Spamming](#bullet-spamming-bug)
-  * [Shield Error](#shield-error)
-  * [Explosion Particle](#explosion-particle-bug)
-  * [Wave Error](#enemy-wave-error)
-
-*Jump To: [Page Top](#introduction), [Game Scenes](#game-scenes), [Player Movement](#player-movement), [Player Abilites](#player-abilities), [Environment](#environment), [Animations](#animations), [Enemies](#enemies), [New Level](#new-level)*
