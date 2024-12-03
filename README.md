@@ -15,7 +15,7 @@
 
 &emsp;Below are descriptions of the stories I worked on, screenshots, gifs, and navigation links. I have also included all the .uassets of blueprints created for the game in this repository. If there are any details not included in this summary that you would like to know about, please feel free to contact me.
 
-# *Please note this summary is still being written as the game was just completed 11/17/2024*
+# *Please note this summary has been migrated into a full [portfolio](https://mawci.github.io)*
 
 ## User Stories
  * Story 1 [Landscape and Structures](#landscape-and-structures)
