@@ -212,7 +212,7 @@ using interfaces
 </p>
 
 
-*Jump To: [Page Top](#introduction), [Game Scenes](#game-scenes), [Player Movement](#player-movement), [Animations](#animations), [Enemies](#enemies), [New Level](#new-level), [Game Over](#game-over), [Skills](#other-skills-learned)*
+
 ##
 
 ### Environment
